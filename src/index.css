@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root[data-theme='Dark'] {
+  --bg-img: url('./assets/bg-mobile-dark.jpg');
+  --bg-color: #171823;
+}
+
+:root[data-theme='Light'] {
+  --bg-img: url('./assets/bg-mobile-light.jpg');
+  --bg-color: #fafafa;
+
+}
+
+
+body {
+  background: var(--bg-img) top/100% 200px no-repeat, var(--bg-color);
+}
