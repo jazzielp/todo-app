@@ -2,18 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bright-blue: #0066FF;
+  --check-background: linear-gradient(#33FF99, #FF6666);
+}
+
 :root[data-theme='Dark'] {
   --bg-img: url('./assets/bg-mobile-dark.jpg');
   --bg-color: #171823;
+  --very-dark-blue: #0E1621;
+  --very-dark-desaturated-blue: #1B212F;
+  --light-grayish-blue: #DDE3E8;
+  --light-grayish-blue-hover: #CEDFE8;
+  --dark-grayish-blue: #7F8FAB;
+  --very-dark-grayish-blue: #3B5766;
+  --very-dark-grayish-blue: #2A3A40;
 }
 
 :root[data-theme='Light'] {
   --bg-img: url('./assets/bg-mobile-light.jpg');
-  --bg-color: #fafafa;
+  --bg-color: #FAFAFA;
+  --very-light-grayish-blue: #D8DFE8;
+  --light-grayish-blue: #C4CFD6;
+  --dark-grayish-blue: #8595A2;
+  --verydark-grayish-blue: #445566;
 
 }
 
 
 body {
   background: var(--bg-img) top/100% 200px no-repeat, var(--bg-color);
+}
+
+@media screen and (min-width: 768px) {
+  :root[data-theme='Dark'] {
+    --bg-img: url('./assets/bg-desktop-dark.jpg');
+  }
+  
+  :root[data-theme='Light'] {
+    --bg-img: url('./assets/bg-desktop-light.jpg');
+  
+  }
+
+  body {
+    background: var(--bg-img) top/100% 300px no-repeat, var(--bg-color);
+  }
 }
