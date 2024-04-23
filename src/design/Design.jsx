@@ -1,4 +1,6 @@
 import React from 'react'
+import { Moon } from '../components/icons/Moon'
+import { Cross } from '../components/icons/Cross'
 
 export function Design () {
   return (

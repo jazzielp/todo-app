@@ -29,19 +29,28 @@
 
 }
 
+html {
+  font-size: 62.5%;
+  font-family: "Josefin Sans", sans-serif ;
+}
+
 
 body {
   background: var(--bg-img) top/100% 200px no-repeat, var(--bg-color);
+}
+
+.app {
+  margin: 48px;
 }
 
 @media screen and (min-width: 768px) {
   :root[data-theme='Dark'] {
     --bg-img: url('./assets/bg-desktop-dark.jpg');
   }
-  
+
   :root[data-theme='Light'] {
     --bg-img: url('./assets/bg-desktop-light.jpg');
-  
+
   }
 
   body {
