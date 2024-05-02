@@ -6,20 +6,26 @@ export function Design () {
   return (
     <div className='app'>
       <header className='header'>
-        <h1 className='header__title'>TODO</h1>
+        <img src='../../public/TODO 2.png' alt='Icon TODO' className='header__title' />
         <Moon />
       </header>
       <main className='main'>
-        <div className='new-todo'>
-          <input className='new-todo__input' type='text' name='create-todo' />
-        </div>
+        <form className='new-todo'>
+          <div className='list-todo__icon' />
+          <input
+            className='new-todo__input' type='text' name='create-todo'
+            placeholder='Create a new todo...'
+          />
+        </form>
         <div className='list-todo'>
           <div className='list-todo__item'>
             <div className='list-todo__info-container'>
-              <div className='list-todo__icon-' />
+              <div className='list-todo__icon-complete' />
               <p className='list-todo__todo'>Reunión a las 5</p>
             </div>
-            <Cross />
+            <button>
+              <Cross size={12} />
+            </button>
           </div>
           <div className='list-todo__actions'>
             <p className='list-todo__count-todo'>5 items left</p>
@@ -28,9 +34,9 @@ export function Design () {
               <a href='#' className='list-todo-filter'>Active</a>
               <a href='#' className='list-todo-filter'>Completed</a>
             </div>
-            <div className='list-todo__clear-container'>
-              <a href='#' className='list-todo__clear-completed'>Clear Completed</a>
-            </div>
+            <button className='list-todo__clear-container'>
+              Clear Completed
+            </button>
           </div>
         </div>
         <div className='list-todo__filters-moviel'>
