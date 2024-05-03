@@ -36,7 +36,7 @@ export function Design () {
               <div className='list-todo__icon-completed'>
                 <Check />
               </div>
-              <p className='list-todo__todo'>Reunión a las 5</p>
+              <p className='list-todo__todo-completed '>Reunión a las 5</p>
             </div>
             <button>
               <Cross size={12} />
