@@ -61,6 +61,14 @@ body {
   width: 108px;
 }
 
+.header__btn-mode {
+  transition: transform 0.3s ease-in-out;
+}
+
+.header__btn-mode:hover{
+  transform: scale(1.1);
+}
+
 /* MAIN */
 .main {
   display: flex;
