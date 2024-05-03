@@ -10,7 +10,7 @@
 
 :root {
   --bright-blue: #0066FF;
-  --check-background: linear-gradient(#55DDFF, #C058F3);
+  --check-background: linear-gradient(to right,#55DDFF, #C058F3);
 }
 
 :root[data-theme='Dark'] {
@@ -27,6 +27,7 @@
   --placeholder-color:#9495A5;
   --text-input: #393A4B;
   --text-item: #494C6B;
+  --link-active: #3A7CFD;
 }
 
 html {
@@ -58,7 +59,9 @@ body {
 
 /* MAIN */
 .main {
-
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .new-todo {
@@ -113,16 +116,39 @@ body {
 }
 
 .list-todo__icon-complete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 20px;
   height: 20px;
+  position: relative;
   border-radius: 100%;
   border: 1px solid var(--line-circle);
   margin-right: 12px;
 }
 
+.list-todo__icon-complete:hover {
+  cursor: pointer;
+  background-image: var(--check-background);
+  border: none;
+}
+
+.list-todo__icon-complete-brackground {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: var(--bg-items);
+  z-index: 9999;
+}
+
+.list-todo__icon-complete-brackground:hover {
+  display: block;
+}
+
 .list-todo__todo {
   font-size: 1.2rem;
-  color: var(--text-item)
+  color: var(--text-item);
+  padding-top: 3px;
 }
 
 .list-todo__icon-close {
@@ -139,13 +165,49 @@ body {
 
 .list-todo__filters {
   display: none;
-  justify-content: space-between;
+  gap: 19px;
+  color: var(--placeholder-color)
+}
+
+.list-todo-filter:hover,
+.list-todo__clear-container:hover
+ {
+  color: var(--text-item)
 }
 
 .list-todo__count-todo,
 .list-todo__clear-container {
   font-size: 1.2rem;
   color: var(--placeholder-color)
+}
+
+.list-todo__filters-moviel {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 18px;
+  background-color: var(--bg-items);
+  border-radius: 5px;
+}
+
+.filters-movie-filter {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--placeholder-color);
+}
+
+.filters-movie-filter--active {
+  color: var(--link-active);
+}
+
+.footer{
+  margin-top: 40px;
+  text-align: center;
+}
+
+.footer__text {
+  font-size: 1.4rem;
+  color: var(--placeholder-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -160,5 +222,41 @@ body {
 
   body {
     background: var(--bg-img) top/100% 300px no-repeat, var(--bg-color);
+  }
+
+  .app {
+    width: 540px;
+  }
+
+  .new-todo__input {
+    font-size: 1.8rem;
+  }
+
+  .list-todo__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .list-todo__todo {
+    font-size: 1.8rem;
+  }
+
+  .list-todo__icon-complete {
+    width: 24px;
+    height: 24px;
+  }
+
+  .list-todo__count-todo,
+  .list-todo__clear-container,
+  .list-todo-filter {
+    font-size: 1.4rem;
+  }
+
+  .list-todo__filters{
+    display: flex;
+  }
+
+  .list-todo__filters-moviel {
+    display: none;
   }
 }

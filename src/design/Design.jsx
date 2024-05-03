@@ -20,7 +20,9 @@ export function Design () {
         <div className='list-todo'>
           <div className='list-todo__item'>
             <div className='list-todo__info-container'>
-              <div className='list-todo__icon-complete' />
+              <div className='list-todo__icon-complete'>
+                <div className='list-todo__icon-complete-brackground' />
+              </div>
               <p className='list-todo__todo'>Reunión a las 5</p>
             </div>
             <button>
@@ -40,13 +42,13 @@ export function Design () {
           </div>
         </div>
         <div className='list-todo__filters-moviel'>
-          <a href='#' className='filters-movie-filter'>All</a>
+          <a href='#' className='filters-movie-filter filters-movie-filter--active'>All</a>
           <a href='#' className='filters-movie-filter'>Active</a>
           <a href='#' className='filters-movie-filter'>Completed</a>
         </div>
       </main>
       <footer className='footer'>
-        <h3>Drag and drop to reorder list</h3>
+        <h3 className='footer__text'>Drag and drop to reorder list</h3>
       </footer>
     </div>
   )
