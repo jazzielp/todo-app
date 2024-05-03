@@ -1,14 +1,5 @@
-import { createContext, useState, ReactNode } from 'react'
-import { Theme } from '../types/types'
-
-interface TodoProviderProps {
-  children: ReactNode
-}
-
-interface ContextValue {
-  theme: Theme
-  setTheme: React.Dispatch<React.SetStateAction<Theme>>
-}
+import { createContext, useState } from 'react'
+import { ContextValue, Theme, TodoProviderProps } from '../types/types'
 
 export const TodoContext = createContext<undefined | ContextValue>(undefined)
 
