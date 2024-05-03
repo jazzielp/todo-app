@@ -1,6 +1,7 @@
 import React from 'react'
 import { Moon } from '../components/icons/Moon'
 import { Cross } from '../components/icons/Cross'
+import { Check } from '../components/icons/Check'
 
 export function Design () {
   return (
@@ -20,8 +21,8 @@ export function Design () {
         <div className='list-todo'>
           <div className='list-todo__item'>
             <div className='list-todo__info-container'>
-              <div className='list-todo__icon-complete'>
-                <div className='list-todo__icon-complete-brackground' />
+              <div className='list-todo__icon-check'>
+                <div className='list-todo__icon-check-brackground' />
               </div>
               <p className='list-todo__todo'>Reunión a las 5</p>
             </div>
@@ -29,6 +30,19 @@ export function Design () {
               <Cross size={12} />
             </button>
           </div>
+          {/* --- */}
+          <div className='list-todo__item'>
+            <div className='list-todo__info-container'>
+              <div className='list-todo__icon-completed'>
+                <Check />
+              </div>
+              <p className='list-todo__todo'>Reunión a las 5</p>
+            </div>
+            <button>
+              <Cross size={12} />
+            </button>
+          </div>
+
           <div className='list-todo__actions'>
             <p className='list-todo__count-todo'>5 items left</p>
             <div className='list-todo__filters'>
