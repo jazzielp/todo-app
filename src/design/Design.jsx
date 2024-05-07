@@ -14,7 +14,6 @@ export function Design () {
         <form className='new-todo'>
           <div className='list-todo__icon' />
           <input
-            name='todoInput'
             className='new-todo__input' type='text'
             name='create-todo'
             placeholder='Create a new todo...'
