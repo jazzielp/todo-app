@@ -19,5 +19,6 @@ export interface ContextValue {
   setTheme: React.Dispatch<React.SetStateAction<Theme>>
   todos: ListTodo
   setTodos: React.Dispatch<React.SetStateAction<ListTodo>>
-  todoCompleted: () => void
+  todoCompleted: (id: string) => void
+  cleanCompleteTodo: () => void
 }

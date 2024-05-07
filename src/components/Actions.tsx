@@ -1,7 +1,11 @@
 import { useTodo } from '../hooks/useTodo'
 
 export function Actions (): JSX.Element {
-  const { todos } = useTodo()
+  const { todos, cleanCompleteTodo } = useTodo()
+  console.log(cleanCompleteTodo)
+  const handleCleanComplete = (): void => {
+    cleanCompleteTodo()
+  }
   return (
     <div className='list-todo__actions'>
       <p className='list-todo__count-todo'>{todos.length} items left</p>
@@ -10,7 +14,7 @@ export function Actions (): JSX.Element {
         <button className='list-todo-filter'>Active</button>
         <button className='list-todo-filter'>Completed</button>
       </div>
-      <button className='list-todo__clear-container'>
+      <button onClick={() => handleCleanComplete()} className='list-todo__clear-container'>
         Clear Completed
       </button>
     </div>

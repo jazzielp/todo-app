@@ -21,11 +21,10 @@ const mockTodos = [
 
 export function useTodo (): ContextValue | undefined {
   const context = useContext(TodoContext)
-  const { theme, setTheme, todos, setTodos, todoCompleted } = context
+  const { theme, setTheme, todos, setTodos, todoCompleted, cleanCompleteTodo } = context
   useEffect(() => {
     const storageTodos = localStorage.getItem('DATA_TODOS') || mockTodos
     setTodos(storageTodos)
   }, [])
-
-  return { theme, setTheme, todos, setTodos, todoCompleted }
+  return { theme, setTheme, todos, setTodos, todoCompleted, cleanCompleteTodo }
 }
