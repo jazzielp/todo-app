@@ -6,9 +6,9 @@ export function Actions (): JSX.Element {
     <div className='list-todo__actions'>
       <p className='list-todo__count-todo'>{todos.length} items left</p>
       <div className='list-todo__filters'>
-        <a href='#' className='list-todo-filter'>All</a>
-        <a href='#' className='list-todo-filter'>Active</a>
-        <a href='#' className='list-todo-filter'>Completed</a>
+        <button className='list-todo-filter'>All</button>
+        <button className='list-todo-filter'>Active</button>
+        <button className='list-todo-filter'>Completed</button>
       </div>
       <button className='list-todo__clear-container'>
         Clear Completed
