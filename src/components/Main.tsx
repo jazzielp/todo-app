@@ -1,4 +1,4 @@
-import { Actions } from './Actions'
+import { Filters } from './Filters'
 import { Form } from './Form'
 import { ListTodo } from './ListTodo'
 
@@ -7,6 +7,7 @@ export function Main (): JSX.Element {
     <main className='main'>
       <Form />
       <ListTodo />
+      <Filters />
     </main>
   )
 }
