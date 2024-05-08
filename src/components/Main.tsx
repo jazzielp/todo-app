@@ -1,4 +1,5 @@
 import { Filters } from './Filters'
+import { Footer } from './Footer'
 import { Form } from './Form'
 import { ListTodo } from './ListTodo'
 
@@ -8,6 +9,7 @@ export function Main (): JSX.Element {
       <Form />
       <ListTodo />
       <Filters />
+      <Footer />
     </main>
   )
 }
