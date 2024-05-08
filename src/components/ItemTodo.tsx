@@ -9,9 +9,13 @@ interface ItemTodoProps {
 
 export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
   const { id, title, completed } = todo
-  const { todoCompleted } = useTodo()
+  const { todoCompleted, deleteTodo } = useTodo()
   const handleCommpleted = (id: string): void => {
     todoCompleted(id)
+  }
+
+  const handleDelete = (id: string) => {
+    deleteTodo(id)
   }
   return (
     <div className='list-todo__item'>
@@ -35,7 +39,7 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
           {title}
         </p>
       </div>
-      <button>
+      <button onClick={(): void => handleDelete(id)}>
         <Cross size={12} />
       </button>
     </div>

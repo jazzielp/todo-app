@@ -1,11 +1,13 @@
 import { FormEvent } from 'react'
+import { useTodo } from '../hooks/useTodo'
 
 export function Form (): JSX.Element {
+  const { createTodo } = useTodo()
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     const newTodo = formData.get('create-todo')
-    console.log(newTodo)
+    createTodo(newTodo)
   }
   return (
     <form onSubmit={event => handleSubmit(event)} className='new-todo'>

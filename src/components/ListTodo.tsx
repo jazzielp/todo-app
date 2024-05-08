@@ -4,6 +4,7 @@ import { Todo } from '../types/types'
 import { Actions } from './Actions'
 export function ListTodo (): JSX.Element {
   const { todos } = useTodo()
+  console.log(todos)
   return (
     <div className='list-todo'>
       {

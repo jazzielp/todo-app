@@ -18,8 +18,27 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
     const cleanTodo = todos.filter(todo => todo.completed)
     setTodos(cleanTodo)
   }
+
+  const deleteTodo = (id: string): void => {
+    const deletedTodo = todos.filter(todo => todo.id !== id)
+    setTodos(deletedTodo)
+  }
+
+  const createTodo = (title: string): void => {
+    if (title.length > 0) {
+      const newTodo = {
+        id: Date.now().toString(),
+        title,
+        completed: false
+      }
+      setTodos([
+        ...todos,
+        newTodo
+      ])
+    }
+  }
   return (
-    <TodoContext.Provider value={{ theme, setTheme, todos, setTodos, todoCompleted, cleanCompleteTodo }}>
+    <TodoContext.Provider value={{ theme, setTheme, todos, setTodos, todoCompleted, cleanCompleteTodo, deleteTodo, createTodo }}>
       {children}
     </TodoContext.Provider>
   )

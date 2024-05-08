@@ -2,7 +2,6 @@ import { useTodo } from '../hooks/useTodo'
 
 export function Actions (): JSX.Element {
   const { todos, cleanCompleteTodo } = useTodo()
-  console.log(cleanCompleteTodo)
   const handleCleanComplete = (): void => {
     cleanCompleteTodo()
   }

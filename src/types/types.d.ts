@@ -21,4 +21,6 @@ export interface ContextValue {
   setTodos: React.Dispatch<React.SetStateAction<ListTodo>>
   todoCompleted: (id: string) => void
   cleanCompleteTodo: () => void
+  deleteTodo: (id: string) => void
+  createTodo: (title: string) => void
 }
