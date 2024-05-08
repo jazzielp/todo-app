@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { Filters } from './Filters'
-import { Footer } from './Footer'
 import { Form } from './Form'
 import { ListTodo } from './ListTodo'
 import { useTodo } from '../hooks/useTodo'
@@ -26,7 +25,6 @@ const mockTodos = [
 export function Main (): JSX.Element {
   const { setTodos } = useTodo()
   useEffect(() => {
-    console.log('entra al use efect')
     const storageTodos = JSON.parse(localStorage.getItem('DATA_TODOS') || '[]')
     if (storageTodos.length > 0) {
       setTodos(storageTodos)
@@ -39,7 +37,6 @@ export function Main (): JSX.Element {
       <Form />
       <ListTodo />
       <Filters />
-      <Footer />
     </main>
   )
 }

@@ -3,12 +3,13 @@ import { ItemTodo } from './ItemTodo'
 import { Todo } from '../types/types'
 import { Actions } from './Actions'
 export function ListTodo (): JSX.Element {
-  const { todos } = useTodo()
-  console.log(todos)
+  const { todos, filtersTodos } = useTodo()
   return (
     <div className='list-todo'>
       {
-        todos && todos.map((todo: Todo) => <ItemTodo key={todo.id} todo={todo} />)
+        filtersTodos?.length > 0
+          ? filtersTodos && filtersTodos.map((todo: Todo) => <ItemTodo key={todo.id} todo={todo} />)
+          : todos && todos.map((todo: Todo) => <ItemTodo key={todo.id} todo={todo} />)
       }
       <Actions />
     </div>

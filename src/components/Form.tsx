@@ -8,6 +8,11 @@ export function Form (): JSX.Element {
     const formData = new FormData(event.currentTarget)
     const newTodo = formData.get('create-todo')
     createTodo(newTodo)
+
+    const inputElement = event.currentTarget.querySelector('input[name="create-todo"]') as HTMLInputElement
+    if (inputElement) {
+      inputElement.value = '' // Establecer el valor del input en una cadena vacía
+    }
   }
   return (
     <form onSubmit={event => handleSubmit(event)} className='new-todo'>

@@ -1,7 +1,8 @@
-import { THEME } from '../const/const'
+import { FILTERS, THEME } from '../const/const'
 import { ReactNode } from 'react'
 
 export type Theme = typeof THEME[keyof typeof THEME]
+export type TypeFilter = typeof FILTERS[keyof typeof FILTERS]
 
 export interface TodoProviderProps {
   children: ReactNode
@@ -23,4 +24,7 @@ export interface ContextValue {
   cleanCompleteTodo: () => void
   deleteTodo: (id: string) => void
   createTodo: (title: string) => void
+  filtersTodo: (filter: TypeFilter) => void
+  filtersTodos: ListTodo
+  filter: TypeFilter
 }
