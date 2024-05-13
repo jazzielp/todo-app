@@ -126,6 +126,7 @@ body {
 .list-todo__info-container {
   display: flex;
   align-items: center;
+  flex: 1;
 }
 
 .list-todo__icon-check {
@@ -171,8 +172,22 @@ body {
 }
 
 .list-todo__todo {
+  width: 90%;
   font-size: 1.2rem;
   color: var(--text-item);
+  padding-top: 3px;
+}
+
+.list-todo__todo:hover {
+  cursor: pointer;
+}
+
+.list-todo__input-todo {
+  width: 90%;
+  font-size: 1.2rem;
+  color: var(--text-item);
+  background: none;
+  outline: none;
   padding-top: 3px;
 }
 
@@ -268,7 +283,8 @@ body {
   }
 
   .list-todo__todo,
-  .list-todo__todo-completed {
+  .list-todo__todo-completed,
+  .list-todo__input-todo {
     font-size: 1.8rem;
   }
 

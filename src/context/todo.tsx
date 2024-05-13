@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { ContextValue, Theme, TodoProviderProps, ListTodo, TypeFilter } from '../types/types'
 import { FILTERS } from '../const/const'
 
@@ -43,6 +43,11 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
       setFilter(FILTERS.Completed)
     }
   }
+
+  useEffect(() => {
+    const todosJSON = JSON.stringify(todos)
+    localStorage.setItem('DATA_TODOS', todosJSON)
+  }, [todos])
 
   const createTodo = (title: string): void => {
     if (title.length > 0) {
