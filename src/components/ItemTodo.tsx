@@ -4,6 +4,8 @@ import { Check } from './icons/Check'
 import { useTodo } from '../hooks/useTodo'
 import { useState } from 'react'
 import { InputTodo } from './InputTodo'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 interface ItemTodoProps {
   todo: Todo
@@ -13,6 +15,7 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
   const { id, title, completed } = todo
   const [edit, setEdit] = useState<boolean>(false)
   const { todoCompleted, deleteTodo } = useTodo()
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id })
   const handleCommpleted = (id: string): void => {
     todoCompleted(id)
   }
@@ -27,8 +30,13 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
     }
   }
 
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition
+  }
+
   return (
-    <div className='list-todo__item'>
+    <div style={style} {...attributes} {...listeners} ref={setNodeRef} className='list-todo__item'>
       <div className='list-todo__info-container'>
         {completed
           ? (

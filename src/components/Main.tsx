@@ -3,6 +3,9 @@ import { Filters } from './Filters'
 import { Form } from './Form'
 import { ListTodo } from './ListTodo'
 import { useTodo } from '../hooks/useTodo'
+import { DndContext, closestCenter } from '@dnd-kit/core'
+import { arrayMove } from '@dnd-kit/sortable'
+import { Todo } from '../types/types'
 
 const mockTodos = [
   {
@@ -23,19 +26,25 @@ const mockTodos = [
 ]
 
 export function Main (): JSX.Element {
-  const { setTodos } = useTodo()
+  const { todos, setTodos } = useTodo()
   useEffect(() => {
     const storageTodos = JSON.parse(localStorage.getItem('DATA_TODOS') || '[]')
-    if (storageTodos.length > 0) {
-      setTodos(storageTodos)
-    } else {
-      setTodos(mockTodos)
-    }
+    setTodos(storageTodos)
   }, [])
+
+  const handleDragEnd = (event: any): void => {
+    const { active, over } = event
+    const oldIndex = todos.findIndex((todo: Todo) => todo.id === active.id)
+    const newIndex = todos.findIndex((todo: Todo) => todo.id === over.id)
+    const newTodos = arrayMove(todos, oldIndex, newIndex)
+    setTodos(newTodos)
+  }
   return (
     <main className='main'>
       <Form />
-      <ListTodo />
+      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <ListTodo />
+      </DndContext>
       <Filters />
     </main>
   )
