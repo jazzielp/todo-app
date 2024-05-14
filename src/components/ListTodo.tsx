@@ -8,13 +8,11 @@ export function ListTodo (): JSX.Element {
   const { todos, filtersTodos, filter } = useTodo()
 
   return (
-    <SortableContext
-      items={todos}
-      strategy={verticalListSortingStrategy}
-      className='list-todo'
-
-    >
-      <div className='list-todo'>
+    <div className='list-todo'>
+      <SortableContext
+        items={todos}
+        strategy={verticalListSortingStrategy}
+      >
         {
         filter === FILTERS.All
           ? todos && todos.map((todo: Todo) => <ItemTodo key={todo.id} todo={todo} />)
@@ -22,7 +20,7 @@ export function ListTodo (): JSX.Element {
       }
         <Actions />
 
-      </div>
-    </SortableContext>
+      </SortableContext>
+    </div>
   )
 }

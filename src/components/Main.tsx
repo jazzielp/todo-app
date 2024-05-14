@@ -33,19 +33,29 @@ export function Main (): JSX.Element {
   }, [])
 
   const handleDragEnd = (event: any): void => {
-    const { active, over } = event
+    const { active, over, activatorEvent } = event
+    const classDiv = activatorEvent.target.className
+    console.log(classDiv)
+    console.log('entra')
     const oldIndex = todos.findIndex((todo: Todo) => todo.id === active.id)
     const newIndex = todos.findIndex((todo: Todo) => todo.id === over.id)
     const newTodos = arrayMove(todos, oldIndex, newIndex)
     setTodos(newTodos)
   }
+
+  const handleCancelDrop = (event: any) => {
+    const classDiv = event.activatorEvent.target.className
+    console.log('entra')
+    return classDiv === 'list-todo__icon-check-brackground'
+  }
+
   return (
-    <main className='main'>
-      <Form />
-      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+    <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} cancelDrop={handleCancelDrop}>
+      <main className='main'>
+        <Form />
         <ListTodo />
-      </DndContext>
-      <Filters />
-    </main>
+        <Filters />
+      </main>
+    </DndContext>
   )
 }
