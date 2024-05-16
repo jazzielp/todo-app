@@ -27,6 +27,7 @@ export function InputTodo ({ id, title, setEdit }: Props): JSX.Element {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       inputRef.current.blur() // Quita el foco del input
+      handleOnBlur()
     }
   }
 

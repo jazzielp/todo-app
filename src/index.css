@@ -123,6 +123,10 @@ body {
   border-bottom: 1px solid var(--line);
 }
 
+.list-todo__item:hover {
+  cursor: pointer;
+}
+
 .list-todo__info-container {
   display: flex;
   align-items: center;
