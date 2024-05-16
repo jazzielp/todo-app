@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { ContextValue, Theme, TodoProviderProps, ListTodo, TypeFilter } from '../types/types'
 import { FILTERS } from '../const/const'
 

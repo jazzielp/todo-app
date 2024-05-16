@@ -1,8 +1,10 @@
-import { DragEvent } from 'react'
+import { DragEvent, useState } from 'react'
 import { Cross } from './icons/Cross'
 import { Todo } from '../types/types'
 import { Check } from './icons/Check'
 import { useTodo } from '../hooks/useTodo'
+
+import { InputTodo } from './InputTodo'
 
 interface ItemTodoProps {
   todo: Todo
@@ -11,6 +13,7 @@ interface ItemTodoProps {
 export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
   const { id, title, completed } = todo
   const { todoCompleted, deleteTodo, todos, setTodos } = useTodo()
+  const [edit, setEdit] = useState<boolean>(false)
   const handleCommpleted = (id: string): void => {
     todoCompleted(id)
   }
@@ -37,6 +40,13 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
     newTodos[todoDragIndex] = todoReplace
     setTodos(newTodos)
   }
+
+  const handleDoblueClick = (): void => {
+    if (!completed) {
+      setEdit(true)
+    }
+  }
+
   return (
     <div
       className='list-todo__item'
@@ -54,17 +64,27 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
             </div>
             )
           : (
-            <div onClick={() => handleCommpleted(id)} className='list-todo__icon-check'>
+            <div
+              onClick={() => handleCommpleted(id)}
+              className='list-todo__icon-check'
+            >
               <div className='list-todo__icon-check-brackground' />
             </div>
             )}
-        <p
-          className={
-            completed ? 'list-todo__todo-completed' : 'list-todo__todo'
-          }
-        >
-          {title}
-        </p>
+        {edit
+          ? (
+            <InputTodo id={id} title={title} setEdit={setEdit} />
+            )
+          : (
+            <p
+              className={
+              completed ? 'list-todo__todo-completed' : 'list-todo__todo'
+            }
+              onDoubleClick={() => handleDoblueClick()}
+            >
+              {title}
+            </p>
+            )}
       </div>
       <button onClick={(): void => handleDelete(id)}>
         <Cross size={12} />
