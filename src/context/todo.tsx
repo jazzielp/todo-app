@@ -26,6 +26,7 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
   const deleteTodo = (id: string): void => {
     const deletedTodo = todos.filter(todo => todo.id !== id)
     setTodos(deletedTodo)
+    filtersTodo(filter, deletedTodo)
   }
 
   const filtersTodo = (filter: TypeFilter, todos: ListTodo): void => {
