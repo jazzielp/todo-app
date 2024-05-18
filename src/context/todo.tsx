@@ -20,6 +20,7 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
   const cleanCompleteTodo = (): void => {
     const cleanTodo = todos.filter(todo => !todo.completed)
     setTodos(cleanTodo)
+    setFilter(FILTERS.All)
   }
 
   const deleteTodo = (id: string): void => {

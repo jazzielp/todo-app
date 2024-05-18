@@ -61,7 +61,6 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
     <div
       className='list-todo__item'
       draggable
-      droppable='true'
       onDragOver={dragginOver}
       onDragStart={event => startDarg(event, todo)}
       onDrop={event => onDrop(event, todo)}
