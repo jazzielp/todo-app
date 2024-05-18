@@ -15,18 +15,25 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
     const todoUpdate = structuredClone(todos)
     todoUpdate[index].completed = true
     setTodos(todoUpdate)
-    filtersTodo(filter, todoUpdate)
+    if (filter !== FILTERS.All) {
+      filtersTodo(filter, todoUpdate)
+    }
   }
 
   const cleanCompleteTodo = (): void => {
     const cleanTodo = todos.filter(todo => !todo.completed)
     setTodos(cleanTodo)
+    if (filter !== FILTERS.All) {
+      filtersTodo(filter, cleanTodo)
+    }
   }
 
   const deleteTodo = (id: string): void => {
     const deletedTodo = todos.filter(todo => todo.id !== id)
     setTodos(deletedTodo)
-    filtersTodo(filter, deletedTodo)
+    if (filter !== FILTERS.All) {
+      filtersTodo(filter, deletedTodo)
+    }
   }
 
   const filtersTodo = (filter: TypeFilter, todos: ListTodo): void => {
@@ -58,10 +65,11 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
         title,
         completed: false
       }
-      setTodos([
-        ...todos,
-        newTodo
-      ])
+      const newTodos = [...todos, newTodo]
+      setTodos(newTodos)
+      if (filter !== FILTERS.All) {
+        filtersTodo(filter, newTodos)
+      }
     }
   }
   return (
