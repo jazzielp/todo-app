@@ -7,7 +7,7 @@ export function Actions (): JSX.Element {
   if (context === undefined) {
     throw new Error('Actions must be used within a TodoProvider')
   }
-  const { todos, cleanCompleteTodo, filtersTodo, filter } = context
+  const { todos, cleanCompleteTodo, filtersTodo, filter, filtersTodos } = context
   const handleCleanComplete = (): void => {
     cleanCompleteTodo()
   }
@@ -17,7 +17,7 @@ export function Actions (): JSX.Element {
 
   return (
     <div className='list-todo__actions'>
-      <p className='list-todo__count-todo'>{todos.length} items left</p>
+      <p className='list-todo__count-todo'>{filter === FILTERS.All ? todos.length : filtersTodos.length} items left</p>
       <div className='list-todo__filters'>
         <button onClick={() => handleFilter(FILTERS.All)} className={`list-todo-filter ${filter === FILTERS.All ? 'filters-movie-filter--active' : ''}`}>All</button>
         <button onClick={() => handleFilter(FILTERS.Active)} className={`list-todo-filter ${filter === FILTERS.Active ? 'filters-movie-filter--active' : ''}`}>Active</button>
