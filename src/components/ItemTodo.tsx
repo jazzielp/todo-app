@@ -12,7 +12,11 @@ interface ItemTodoProps {
 
 export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
   const { id, title, completed } = todo
-  const { todoCompleted, deleteTodo, todos, setTodos } = useTodo()
+  const context = useTodo()
+  if (context === undefined) {
+    throw new Error('ItemTodo must be used within a TodoProvider')
+  }
+  const { todoCompleted, deleteTodo, todos, setTodos } = context
   const [edit, setEdit] = useState<boolean>(false)
   const handleCommpleted = (id: string): void => {
     todoCompleted(id)
@@ -35,6 +39,12 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
     const todoDrag = todos.find((todo: Todo) => todo.id === todoID)
     const todoDragIndex = todos.findIndex((todo: Todo) => todo.id === todoID)
     const todoReplaceIndex = todos.findIndex((todo: Todo) => todo.id === todoReplace.id)
+
+    if (todoDrag === undefined || todoDragIndex === -1 || todoReplaceIndex === -1) {
+      console.error('Todo not found')
+      return
+    }
+
     const newTodos = structuredClone(todos)
     newTodos[todoReplaceIndex] = todoDrag
     newTodos[todoDragIndex] = todoReplace

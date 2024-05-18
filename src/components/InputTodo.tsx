@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState, MutableRefObject } from 'react'
 import { useTodo } from '../hooks/useTodo'
 interface Props {
   id: string
@@ -6,10 +6,17 @@ interface Props {
   setEdit: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+type InputRef = MutableRefObject<HTMLInputElement | null>
+
 export function InputTodo ({ id, title, setEdit }: Props): JSX.Element {
-  const { todos, setTodos } = useTodo()
+  const contex = useTodo()
+
+  if (contex === undefined) {
+    throw new Error('InputTodo must be used within a TodoProvider')
+  }
+  const { todos, setTodos } = contex
   const [textInput, setTextInput] = useState<string>(title)
-  const inputRef = useRef()
+  const inputRef: InputRef = useRef<HTMLInputElement | null>(null)
 
   const handleChangeTodo = (e: ChangeEvent<HTMLInputElement>): void => {
     setTextInput(e.target.value)
@@ -24,15 +31,17 @@ export function InputTodo ({ id, title, setEdit }: Props): JSX.Element {
     setTodos(newTodos)
   }
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === 'Enter') {
-      inputRef.current.blur() // Quita el foco del input
+      if (inputRef.current != null) {
+        inputRef.current.blur() // Quita el foco del input
+      }
       handleOnBlur()
     }
   }
 
   useEffect(() => {
-    if (inputRef.current) {
+    if (inputRef.current != null) {
       // Enfocar el input
       inputRef.current.focus()
     }

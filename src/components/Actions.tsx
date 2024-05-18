@@ -3,7 +3,11 @@ import { useTodo } from '../hooks/useTodo'
 import { TypeFilter } from '../types/types'
 
 export function Actions (): JSX.Element {
-  const { todos, cleanCompleteTodo, filtersTodo, filter } = useTodo()
+  const context = useTodo()
+  if (context === undefined) {
+    throw new Error('Actions must be used within a TodoProvider')
+  }
+  const { todos, cleanCompleteTodo, filtersTodo, filter } = context
   const handleCleanComplete = (): void => {
     cleanCompleteTodo()
   }

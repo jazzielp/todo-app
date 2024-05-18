@@ -5,7 +5,13 @@ import { THEME } from '../const/const'
 import { Theme } from '../types/types'
 
 export function Header (): JSX.Element {
-  const { theme, setTheme } = useTodo()
+  const context = useTodo()
+
+  if (context === undefined) {
+    throw new Error('Header must be used within a TodoProvider')
+  }
+  const { theme, setTheme } = context
+
   const handleTheme = (): void => {
     setTheme((preveState: Theme) => preveState === THEME.Light ? THEME.Dark : THEME.Light)
     const htmlElement = document.documentElement

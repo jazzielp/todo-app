@@ -2,7 +2,11 @@ import { FILTERS } from '../const/const'
 import { useTodo } from '../hooks/useTodo'
 import { TypeFilter } from '../types/types'
 export function Filters (): JSX.Element {
-  const { filtersTodo, filter } = useTodo()
+  const context = useTodo()
+  if (context === undefined) {
+    throw new Error('Filters must be used within a TodoProvider')
+  }
+  const { filtersTodo, filter } = context
   const handleFilter = (filter: TypeFilter): void => {
     filtersTodo(filter)
   }

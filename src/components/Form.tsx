@@ -2,15 +2,24 @@ import { FormEvent } from 'react'
 import { useTodo } from '../hooks/useTodo'
 
 export function Form (): JSX.Element {
-  const { createTodo } = useTodo()
+  const context = useTodo()
+  if (context === undefined) {
+    throw new Error('Form must be used within a TodoProvider')
+  }
+  const { createTodo } = context
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     const newTodo = formData.get('create-todo')
-    createTodo(newTodo)
+    if (typeof newTodo === 'string' && newTodo.trim().length > 0) {
+      createTodo(newTodo)
+    } else {
+      console.error('Invalid todo')
+    }
 
     const inputElement = event.currentTarget.querySelector('input[name="create-todo"]') as HTMLInputElement
-    if (inputElement) {
+    if (inputElement instanceof HTMLInputElement) {
       inputElement.value = '' // Establecer el valor del input en una cadena vacía
     }
   }
