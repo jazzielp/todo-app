@@ -12,7 +12,7 @@ export function Actions (): JSX.Element {
     cleanCompleteTodo()
   }
   const handleFilter = (filter: TypeFilter): void => {
-    filtersTodo(filter)
+    filtersTodo(filter, todos)
   }
 
   return (

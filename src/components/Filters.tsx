@@ -6,9 +6,9 @@ export function Filters (): JSX.Element {
   if (context === undefined) {
     throw new Error('Filters must be used within a TodoProvider')
   }
-  const { filtersTodo, filter } = context
+  const { todos, filtersTodo, filter } = context
   const handleFilter = (filter: TypeFilter): void => {
-    filtersTodo(filter)
+    filtersTodo(filter, todos)
   }
 
   return (

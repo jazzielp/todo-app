@@ -15,12 +15,12 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
     const todoUpdate = structuredClone(todos)
     todoUpdate[index].completed = true
     setTodos(todoUpdate)
+    filtersTodo(filter, todoUpdate)
   }
 
   const cleanCompleteTodo = (): void => {
     const cleanTodo = todos.filter(todo => !todo.completed)
     setTodos(cleanTodo)
-    setFilter(FILTERS.All)
   }
 
   const deleteTodo = (id: string): void => {
@@ -28,7 +28,7 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
     setTodos(deletedTodo)
   }
 
-  const filtersTodo = (filter: TypeFilter): void => {
+  const filtersTodo = (filter: TypeFilter, todos: ListTodo): void => {
     if (filter === FILTERS.All) {
       setFiltersTodos([])
       setFilter(FILTERS.All)

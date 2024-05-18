@@ -24,7 +24,7 @@ export interface ContextValue {
   cleanCompleteTodo: () => void
   deleteTodo: (id: string) => void
   createTodo: (title: string) => void
-  filtersTodo: (filter: TypeFilter) => void
+  filtersTodo: (filter: TypeFilter, todos: ListTodo) => void
   filtersTodos: ListTodo
   filter: TypeFilter
 }
