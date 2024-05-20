@@ -20,9 +20,9 @@ export function Header (): JSX.Element {
   return (
     <header className='header'>
       <img src='TODO 2.png' alt='Icon TODO' className='header__title' />
-      <button onClick={handleTheme} className='header__btn-mode'>
-        {theme === 'Light' ? <Moon /> : <Sun />}
-      </button>
+      <div onClick={handleTheme} className='header__btn-mode'>
+        {theme === 'Light' ? <Sun /> : <Moon />}
+      </div>
     </header>
   )
 }

@@ -12,7 +12,6 @@ export function Main (): JSX.Element {
   const { setTodos } = context
 
   useEffect(() => {
-    // const storageTodos = JSON.parse(localStorage.getItem('DATA_TODOS') || '[]')
     const storedTodos: string | null = localStorage.getItem('DATA_TODOS')
     const storageTodos = storedTodos !== null && storedTodos !== '' ? JSON.parse(storedTodos) : []
     setTodos(storageTodos)
