@@ -116,7 +116,7 @@ body {
 
 .list-todo__item {
   width: 100%;
-  padding: 16px 20px;
+  padding: 14px 19px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -294,8 +294,8 @@ body {
 
   .list-todo__icon-completed,
   .list-todo__icon-check {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
   }
 
   .list-todo__icon-check-brackground {
