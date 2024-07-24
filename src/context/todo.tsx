@@ -13,11 +13,11 @@ export function TodoProvider ({ children }: TodoProviderProps): JSX.Element {
   const todoCompleted = (id: string): void => {
     const index = todos.findIndex(todo => todo.id === id)
     const todoUpdate = structuredClone(todos)
-    todoUpdate[index].completed = true
-    setTodos(todoUpdate)
+    todoUpdate[index].completed = !todoUpdate[index].completed
     if (filter !== FILTERS.All) {
       filtersTodo(filter, todoUpdate)
     }
+    setTodos(todoUpdate)
   }
 
   const cleanCompleteTodo = (): void => {

@@ -68,7 +68,10 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
       <div className='list-todo__info-container'>
         {completed
           ? (
-            <div className='list-todo__icon-completed'>
+            <div
+              onClick={() => handleCommpleted(id)}
+              className='list-todo__icon-completed'
+            >
               <Check />
             </div>
             )
