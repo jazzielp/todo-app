@@ -62,10 +62,11 @@ body {
 }
 
 .header__btn-mode {
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.1s ease-in-out;
 }
 
 .header__btn-mode:hover{
+  cursor: pointer;
   transform: scale(1.1);
 }
 
@@ -92,6 +93,21 @@ body {
   border: solid 1px var(--line);
   border-radius: 50%;
   margin: 0 12px;
+}
+
+.list-todo__delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  transition: color 0.2s ease-in-out;
+  color: var(--placeholder-color)
+}
+
+.list-todo__delete-button:hover{
+  cursor: pointer;
+  color: var(--text-item);
 }
 
 .new-todo__input {

@@ -98,7 +98,7 @@ export function ItemTodo ({ todo }: ItemTodoProps): JSX.Element {
             </p>
             )}
       </div>
-      <button onClick={(): void => handleDelete(id)}>
+      <button className='list-todo__delete-button' onClick={(): void => handleDelete(id)}>
         <Cross size={12} />
       </button>
     </div>
